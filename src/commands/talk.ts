@@ -11,7 +11,7 @@ const commandTalk = {
     const reason = interaction.options.get("question");
     console.log(reason);
 
-    await interaction.reply(`${reason?.value} is the resan`);
+    await interaction.reply(`Ai wil reply to your question`);
   },
 };
 

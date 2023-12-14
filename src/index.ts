@@ -15,7 +15,6 @@ const client = new MyClient({
   ],
 });
 
-client.commands = new Collection();
 
 (() => {
   setAllCommands(client);
