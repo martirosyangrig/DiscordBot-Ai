@@ -7,7 +7,7 @@ const openai = new OpenAI({
   apiKey: process.env.AI_APi_KEY as string,
 });
 
-async function askAi(content: any) {
+async function askAI(content: any) {
   const completion = await openai.chat.completions.create({
     messages: [
       {
@@ -23,4 +23,4 @@ async function askAi(content: any) {
   return response;
 }
 
-export default askAi;
+export default askAI;

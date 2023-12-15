@@ -1,5 +1,9 @@
-import { CommandInteraction, EmbedBuilder, SlashCommandBuilder } from "discord.js";
-import askAi from "../utils/openAi";
+import {
+  CommandInteraction,
+  EmbedBuilder,
+  SlashCommandBuilder,
+} from "discord.js";
+import askAI from "../openAI/openAi";
 
 const commandTalk = {
   data: new SlashCommandBuilder()
@@ -12,13 +16,13 @@ const commandTalk = {
     const question = interaction.options.get("question");
     await interaction.deferReply();
     try {
-      const aiResponse = await askAi(question?.value);
+      const aiResponse = await askAI(question?.value);
       const exampleEmbed = new EmbedBuilder()
-        .setColor(0x0099FF)
+        .setColor(0x0099ff)
         .setTitle(`${question?.value}`)
-        .setDescription(`AI Response: ${aiResponse}`)
-        
-      await interaction.followUp({embeds: [exampleEmbed]});
+        .setDescription(`AI Response: ${aiResponse}`);
+
+      await interaction.followUp({ embeds: [exampleEmbed] });
     } catch (error) {
       console.error(error);
       await interaction.followUp(`Try agin`);

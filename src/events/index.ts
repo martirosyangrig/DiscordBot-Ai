@@ -1,5 +1,5 @@
 import onCommand from "./onCommand";
-import onReady from "./ready";
+import onReady from "./onReady";
 
 const allEvents = [onCommand, onReady];
 
