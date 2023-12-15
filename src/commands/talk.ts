@@ -10,8 +10,12 @@ const commandTalk = {
     .setName("talk")
     .setDescription("Answeres the wuestion")
     .addStringOption((option) =>
-      option.setName("question").setDescription("The Question to answere")
+      option
+        .setName("question")
+        .setDescription("The Question to answere")
+        .setRequired(true)
     ),
+    
   async execute(interaction: CommandInteraction) {
     const question = interaction.options.get("question");
     await interaction.deferReply();
