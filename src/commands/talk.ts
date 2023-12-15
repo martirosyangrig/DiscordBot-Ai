@@ -1,4 +1,5 @@
 import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import askAi from "../utils/openAi";
 
 const commandTalk = {
   data: new SlashCommandBuilder()
@@ -8,10 +9,11 @@ const commandTalk = {
       option.setName("question").setDescription("The Question to answere")
     ),
   async execute(interaction: CommandInteraction) {
-    const reason = interaction.options.get("question");
-    console.log(reason);
+    const question = interaction.options.get("question");
 
-    await interaction.reply(`Ai wil reply to your question`);
+    const aiAnswere = await askAi(question?.value);
+
+    await interaction.reply(`${aiAnswere}`);
   },
 };
 

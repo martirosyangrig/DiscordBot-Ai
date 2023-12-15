@@ -1,11 +1,16 @@
 import { Client } from "discord.js";
-import registerCommands from "../utils/registerCommands";
+import { MyClient } from "../utils/myClient";
+import allCommands from "../commands";
 
 const onReady = {
   name: "ready",
-  async execute(client: Client<true>) {
-    await registerCommands(client)
-    console.log(`Bot ${client.user.tag} is online`);
+  async execute(c: Client<true>, client: MyClient) {
+    const modifeidCommands = allCommands.map(el => {
+      return { ...el.data.toJSON() }
+    })
+    await client.application?.commands.set(modifeidCommands)
+
+    console.log(`Bot ${c.user.tag} is online`);
   },
 };
 

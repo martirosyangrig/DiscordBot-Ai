@@ -6,7 +6,6 @@ const onCommand = {
   async execute(interaction: Interaction<CacheType>, client: MyClient) {
     if (!interaction.isCommand()) return;
 
-    console.log(interaction);
     const command = client.commands.get(interaction.commandName);
     if (!command) {
       console.error(

@@ -1,16 +1,26 @@
 import OpenAI from "openai";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const openai = new OpenAI({
-  apiKey: process.env.AI_APi_KEY || "",
+  apiKey: process.env.AI_APi_KEY as string,
 });
 
-async function main() {
+async function askAi(content: any) {
   const completion = await openai.chat.completions.create({
-    messages: [{ role: "system", content: "You are a helpful assistant." }],
+    messages: [
+      {
+        role: "system",
+        content: ` ${content}`,
+      },
+    ],
     model: "gpt-3.5-turbo",
   });
 
-  console.log(completion.choices[0]);
+  const response = completion.choices[0].message.content;
+
+  return response;
 }
 
-main();
+export default askAi;

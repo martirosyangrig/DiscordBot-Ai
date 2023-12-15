@@ -1,4 +1,4 @@
-import { Collection, IntentsBitField } from "discord.js";
+import { IntentsBitField } from "discord.js";
 import dotenv from "dotenv";
 import setAllCommands from "./utils/setAllCommands";
 import setAllEvents from "./utils/setAllEvents";
@@ -15,8 +15,7 @@ const client = new MyClient({
   ],
 });
 
-
-(() => {
+(async () => {
   setAllCommands(client);
   setAllEvents(client);
 
