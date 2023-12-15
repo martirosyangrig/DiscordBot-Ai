@@ -1,11 +1,12 @@
 import { CacheType, Interaction } from "discord.js";
 import { MyClient } from "../utils/myClient";
 
-const onTalk = {
+const onCommand = {
   name: "interactionCreate",
   async execute(interaction: Interaction<CacheType>, client: MyClient) {
     if (!interaction.isCommand()) return;
 
+    console.log(interaction);
     const command = client.commands.get(interaction.commandName);
     if (!command) {
       console.error(
@@ -26,4 +27,4 @@ const onTalk = {
   },
 };
 
-export default onTalk;
+export default onCommand;
